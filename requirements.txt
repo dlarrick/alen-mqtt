@@ -1,0 +1,2 @@
+pytuya
+paho-mqtt

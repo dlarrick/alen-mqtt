@@ -1,0 +1,6 @@
+{
+    "name": "BreatheSmart 45i",
+    "id": "device-id",
+    "key": "device-key",
+    "address": "ip-or-hostname"
+}
