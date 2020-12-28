@@ -7,11 +7,11 @@ Alen BreatheSmart air purifiers have a hidden WiFi interface that implements the
 ## Enabling WiFi
 To enable WiFi on an Alen BreatheSmart filter:
 * Download the "Tuya Smart" app onto your Android or iOS device and create an account
-* Hold the "Auto" button for 5-10 seconds or until the WiFi symbol on upper right starts blinking
+* On the purifier control panel, hold the "Auto" button for 5-10 seconds or until the WiFi symbol on upper right starts blinking
 * Follow the instructions in the Tuya Smart app to scan for and add a device
 
 ## Getting local API credentials
-Follow the steps at [TuyAPI](https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md) through running `tuya-cli wizard` to generate an ID and Key. Be forewarned, this process involves setting up a developer account at Tuya but is well documented by the TuyAPI project and relatively straightforward. Note: the 'virtual ID' for the device can be found in the Tuya Smart app's device page under the Edit button (upper right), Device Information.
+Follow the steps in [TuyAPI's documentation](https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md) through running `tuya-cli wizard` to generate an ID and Key. Be forewarned, this process involves setting up a developer account at Tuya but is well documented by the TuyAPI project and relatively straightforward. Note: the 'virtual ID' for the device can be found in the Tuya Smart app's device page under the Edit button (upper right), Device Information.
 
 Note: despite using the process, documentation, and wizard from the TuyAPI project, alen-mqtt uses the semi-related pytuya Python library to talk to the purifier. Once you have the credentials and you're sure it works, you can remove the node.js components if you're not otherwise using them.
 
@@ -20,6 +20,8 @@ Fill in filter.json with the ID & key from `tuya-cli wizard`, being sure to use 
 
 ## Running
 Just run ./airfilter.py. It should start reading from the purifier and writing to MQTT.
+
+The `alen` file in this repo is an init.d script to run airfilter.py as a daemon. You'll need to fill in the `DAEMON_PATH` variable.
 
 ## Home Assistant
 Here are the sensors I have created in my own setup:
@@ -61,3 +63,10 @@ I have figured out the obvious field mappings from the raw `dps` dict. They are 
 |21 | ? |
 
 I'm not sure what the last 3 fields represent.
+
+## Possible enhancements
+Pull requests welcome :-)
+
+1. My MQTT broker does not require a password since it just runs on localhost. Accommodate setups that do.
+1. This utility as it stands is read-only, not allowing control of the purifier. I think it would be possible to listen to MQTT and translate that into calls to control the purifier.
+1. TuyAPI does not require configuring the purifier's local IP address. Presumably it's either using the Tuya cloud API directly, or using it to retrieve the local IP.
