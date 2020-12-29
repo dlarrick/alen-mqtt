@@ -70,3 +70,10 @@ Pull requests welcome :-)
 1. My MQTT broker does not require a password since it just runs on localhost. Accommodate setups that do.
 1. This utility as it stands is read-only, not allowing control of the purifier. I think it would be possible to listen to MQTT and translate that into calls to control the purifier.
 1. TuyAPI does not require configuring the purifier's local IP address. Presumably it's either using the Tuya cloud API directly, or using it to retrieve the local IP. If the latter, this utility could do the same.
+
+## Other options
+The [Local Tuya](https://github.com/rospogrigio/localtuya) component (installable via HACS) is capable of talking to this device. You will need the key obtained from `tuya-cli wizard`, and the table of DPS field meanings above.
+
+The Android / iOS app will continue to work.
+
+Whatever you choose, only use one method. The devices only allow one connection at a time.
