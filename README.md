@@ -58,7 +58,7 @@ I have figured out the obvious field mappings from the raw `dps` dict. They are 
 |5  |  Filter percent remaining |
 |6  |  ionizer       |
 |7  |  lock          |
-|17 | ? |
+|17 |  minutes of runtime? |
 |19 | ? |
 |21 | ? |
 
