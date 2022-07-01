@@ -64,7 +64,6 @@ def read_filter(filter):
         filter['id'], filter['address'], filter['key'])
     device.set_version(3.3)
     raw_status = device.status()
-    print(raw_status)
     status = {}
     for key, val in raw_status['dps'].items():
         name = DPS_MAPPING.get(key, key)
