@@ -1,2 +1,2 @@
-pytuya
+tinytuya
 paho-mqtt

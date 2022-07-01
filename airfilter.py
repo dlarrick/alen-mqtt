@@ -5,7 +5,7 @@ import json
 import time
 import datetime
 import logging
-import pytuya
+import tinytuya
 import paho.mqtt.client as mqttClient
 
 _LOGGER = logging.getLogger(__name__)
@@ -60,10 +60,11 @@ def read_config(filename):
 
 def read_filter(filter):
     """Read filter attributes"""
-    device = pytuya.Device(
-        filter['id'], filter['address'], filter['key'], "device")
+    device = tinytuya.Device(
+        filter['id'], filter['address'], filter['key'])
     device.set_version(3.3)
     raw_status = device.status()
+    print(raw_status)
     status = {}
     for key, val in raw_status['dps'].items():
         name = DPS_MAPPING.get(key, key)
@@ -88,7 +89,7 @@ def main(argv):
 
     while True:
         now = datetime.datetime.now()
-        next_time = now + datetime.timedelta(seconds=30)
+        next_time = now + datetime.timedelta(seconds=10)
 
         reading = None
         for attempt in range(10):
