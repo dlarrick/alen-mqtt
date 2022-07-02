@@ -13,7 +13,7 @@ To enable WiFi on an Alen BreatheSmart filter:
 ## Getting local API credentials
 Follow the steps in [TuyAPI's documentation](https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md) through running `tuya-cli wizard` to generate an ID and Key. Be forewarned, this process involves setting up a developer account at Tuya but is well documented by the TuyAPI project and relatively straightforward. Note: the 'virtual ID' for the device can be found in the Tuya Smart app's device page under the Edit button (upper right), Device Information.
 
-Note: despite using the process, documentation, and wizard from the TuyAPI project, alen-mqtt uses the semi-related pytuya Python library to talk to the purifier. Once you have the credentials and you're sure it works, you can remove the node.js components if you're not otherwise using them.
+Note: despite using the process, documentation, and wizard from the TuyAPI project, alen-mqtt uses the semi-related ~pytuya~ [tinytuya](https://github.com/jasonacox/tinytuya) Python library to talk to the purifier. Once you have the credentials and you're sure it works, you can remove the node.js components if you're not otherwise using them.
 
 ## Configuring alen-mqtt
 Fill in filter.json with the ID & key from `tuya-cli wizard`, being sure to use the IP address (or hostname) on your local network, not the one reported in the app. You will probably want to configure a static DHCP reservation for your purifier on your router or DHCP server. Change the MQTT `BROKER_HOST` and/or `TOPIC` as required for your setup in `airfilter.py`.
